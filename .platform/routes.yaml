@@ -1,0 +1,11 @@
+https://{default}/:
+  type: upstream
+  upstream: mymagento:http
+  cache:
+    enabled: false
+
+https://www.{default}/:
+  type: upstream
+  upstream: mymagento:http
+  cache:
+    enabled: false
