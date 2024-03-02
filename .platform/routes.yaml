@@ -1,11 +1,24 @@
 https://{default}/:
   type: upstream
-  upstream: mymagento:http
+  upstream: "varnish:http"
   cache:
     enabled: false
 
 https://www.{default}/:
   type: upstream
-  upstream: mymagento:http
+  upstream: "varnish:http"
+  cache:
+    enabled: false
+
+# http needs to route to Varnish or Magento's purge requests will not connect
+http://{default}/:
+  type: upstream
+  upstream: "varnish:http"
+  cache:
+    enabled: false
+
+http://www.{default}/:
+  type: upstream
+  upstream: "varnish:http"
   cache:
     enabled: false

@@ -20,9 +20,18 @@ redis-session:
   disk: 256
 
 opensearch:
-  type: opensearch:1.2
+  type: opensearch:2
   disk: 256
 
 rabbitmq:
   type: rabbitmq:3.9
   disk: 512
+
+varnish:
+  type: varnish:7.3
+  relationships:
+    application: 'mymagento:http'
+  configuration:
+    vcl: !include
+      type: string
+      path: varnish.vcl
